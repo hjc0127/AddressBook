@@ -1,12 +1,12 @@
 // AddressBook.c
 /*
-ÆÄÀÏÀÌ¸§: AddressBook.c
-±â´É: ÁÖ¼Ò·ÏÀ» °ü¸®ÇÑ´Ù. (Create, Record, Find, Correct, Erase, Arrange, Destroy)
-ÀÛ¼ºÀÚ: Á¶ÇüÁø
-ÀÛ¼ºÀÏÀÚ: 2107/02/24
+íŒŒì¼ì´ë¦„: AddressBook.c
+ê¸°ëŠ¥: ì£¼ì†Œë¡ì„ ê´€ë¦¬í•œë‹¤. (Create, Record, Find, Correct, Erase, Arrange, Destroy)
+ì‘ì„±ì: ì¡°í˜•ì§„
+ì‘ì„±ì¼ì: 2107/02/24
 */
 
-// ¸ÅÅ©·Î¼±¾ğ
+// ë§¤í¬ë¡œì„ ì–¸
 #include "AddressBook.h"
 #include <stdio.h>
 #include <string.h>
@@ -14,10 +14,10 @@
 #pragma warning(disable : 4996)
 
 /*
-ÇÔ¼öÀÌ¸§: Create
-±â´É: ÇÒ´ç·®¸¸Å­ »õÇ¥¸¦ ¸¸µç´Ù.
-ÀÔ·Â: capacity(ÇÒ´ç·®)
-Ãâ·«: ¾øÀ½
+í•¨ìˆ˜ì´ë¦„: Create
+ê¸°ëŠ¥: í• ë‹¹ëŸ‰ë§Œí¼ ìƒˆí‘œë¥¼ ë§Œë“ ë‹¤.
+ì…ë ¥: capacity(í• ë‹¹ëŸ‰)
+ì¶œëµ: ì—†ìŒ
 */
 void Create(AddressBook *addressBook, Long capacity) {
 	addressBook->personals = (Personal(*))calloc(capacity, sizeof(Personal));
@@ -26,10 +26,10 @@ void Create(AddressBook *addressBook, Long capacity) {
 }
 
 /*
-ÇÔ¼öÀÌ¸§: Load
-±â´É: AddressBook.dat ÆÄÀÏ·ÎºÎÅÍ ÁÖ¼Ò·ÏÀ» ºÒ·¯¿Â´Ù.
-ÀÔ·Â: ¾øÀ½
-Ãâ·«: count
+í•¨ìˆ˜ì´ë¦„: Load
+ê¸°ëŠ¥: AddressBook.dat íŒŒì¼ë¡œë¶€í„° ì£¼ì†Œë¡ì„ ë¶ˆëŸ¬ì˜¨ë‹¤.
+ì…ë ¥: ì—†ìŒ
+ì¶œëµ: count
 */
 Long Load(AddressBook *addressBook) {
 	Personal personal;
@@ -74,10 +74,10 @@ Long Load(AddressBook *addressBook) {
 }
 
 /*
-ÇÔ¼öÀÌ¸§: Record
-±â´É: ¼º¸í, ÁÖ¼Ò, ÀüÈ­¹øÈ£, ÀÌ¸ŞÀÏÁÖ¼Ò¸¦ ÀÔ·ÂÇÏ¿© ÁÖ¼Ò·Ï¿¡ ÀúÀåÇÑ´Ù.
-ÀÔ·Â: name, address, telephoneNumber, emailAddress
-Ãâ·Â: index(ÁÙÀÇ À§Ä¡)
+í•¨ìˆ˜ì´ë¦„: Record
+ê¸°ëŠ¥: ì„±ëª…, ì£¼ì†Œ, ì „í™”ë²ˆí˜¸, ì´ë©”ì¼ì£¼ì†Œë¥¼ ì…ë ¥í•˜ì—¬ ì£¼ì†Œë¡ì— ì €ì¥í•œë‹¤.
+ì…ë ¥: name, address, telephoneNumber, emailAddress
+ì¶œë ¥: index(ì¤„ì˜ ìœ„ì¹˜)
 */
 
 Long Record(AddressBook *addressBook, char(*name), char(*address), char(*telephoneNumber), char(*emailAddress)) {
@@ -109,10 +109,10 @@ Long Record(AddressBook *addressBook, char(*name), char(*address), char(*telepho
 }
 
 /*
-ÇÔ¼öÀÌ¸§: Find
-±â´É: °³ÀÎÀÇ ¼º¸íÀ» ÀÔ·Â¹Ş¾Æ ÁÖ¼Ò·Ï¿¡ °°Àº ¼º¸íÀÌ ÀÖ´ÂÁö È®ÀÎÇÏ¿© ÇØ´çÇÏ´Â ÁÙÀÇ À§Ä¡µé°ú °³¼ö¸¦ Ãâ·ÂÇÑ´Ù.
-ÀÔ·Â: name
-Ãâ·Â: indexes, count
+í•¨ìˆ˜ì´ë¦„: Find
+ê¸°ëŠ¥: ê°œì¸ì˜ ì„±ëª…ì„ ì…ë ¥ë°›ì•„ ì£¼ì†Œë¡ì— ê°™ì€ ì„±ëª…ì´ ìˆëŠ”ì§€ í™•ì¸í•˜ì—¬ í•´ë‹¹í•˜ëŠ” ì¤„ì˜ ìœ„ì¹˜ë“¤ê³¼ ê°œìˆ˜ë¥¼ ì¶œë ¥í•œë‹¤.
+ì…ë ¥: name
+ì¶œë ¥: indexes, count
 */
 void Find(AddressBook *addressBook, char(*name), Long *(*indexes), Long *count) {
 	Long i = 0;
@@ -133,10 +133,10 @@ void Find(AddressBook *addressBook, char(*name), Long *(*indexes), Long *count) 
 
 
 /*
-ÇÔ¼öÀÌ¸§: Correct
-±â´É: index¿¡ ÇØ´çÇÏ´Â °³ÀÎÀÇ ÁÖ¼Ò·ÏÀ» ¼öÁ¤ÇÑ´Ù.
-ÀÔ·Â: index, address, telephoneNumber, emailAddress
-Ãâ·Â: none
+í•¨ìˆ˜ì´ë¦„: Correct
+ê¸°ëŠ¥: indexì— í•´ë‹¹í•˜ëŠ” ê°œì¸ì˜ ì£¼ì†Œë¡ì„ ìˆ˜ì •í•œë‹¤.
+ì…ë ¥: index, address, telephoneNumber, emailAddress
+ì¶œë ¥: none
 */
 Long Correct(AddressBook *addressBook, Long index, char(*address), char(*telephoneNumber), char(*emailAddress)) {
 	strcpy(addressBook->personals[index].address, address);
@@ -146,10 +146,10 @@ Long Correct(AddressBook *addressBook, Long index, char(*address), char(*telepho
 }
 
 /*
-ÇÔ¼öÀÌ¸§: Erase
-±â´É: index¿¡ ÇØ´çÇÏ´Â °³ÀÎÀÇ ÁÖ¼Ò·ÏÀ» »èÁ¦ÇÑ´Ù.
-ÀÔ·Â: index
-Ãâ·Â: index(=0)
+í•¨ìˆ˜ì´ë¦„: Erase
+ê¸°ëŠ¥: indexì— í•´ë‹¹í•˜ëŠ” ê°œì¸ì˜ ì£¼ì†Œë¡ì„ ì‚­ì œí•œë‹¤.
+ì…ë ¥: index
+ì¶œë ¥: index(=0)
 */
 Long Erase(AddressBook *addressBook, Long index) {
 	Personal(*temp) = { 0 };
@@ -181,10 +181,10 @@ Long Erase(AddressBook *addressBook, Long index) {
 }
 
 /*
-ÇÔ¼öÀÌ¸§: Arrange
-±â´É: ÁÖ¼Ò·ÏÀ» ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÑ´Ù.
-ÀÔ·Â: ¾øÀ½
-Ãâ·«: ¾øÀ½
+í•¨ìˆ˜ì´ë¦„: Arrange
+ê¸°ëŠ¥: ì£¼ì†Œë¡ì„ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í•œë‹¤.
+ì…ë ¥: ì—†ìŒ
+ì¶œëµ: ì—†ìŒ
 */
 void Arrange(AddressBook *addressBook) {
 	Long i;
@@ -202,10 +202,10 @@ void Arrange(AddressBook *addressBook) {
 }
 
 /*
-ÇÔ¼öÀÌ¸§: Save
-±â´É: AddressBook.dat ÆÄÀÏ¿¡ ÁÖ¼Ò·ÏÀ» ÀúÀåÇÑ´Ù.
-ÀÔ·Â: ¾øÀ½
-Ãâ·«: count
+í•¨ìˆ˜ì´ë¦„: Save
+ê¸°ëŠ¥: AddressBook.dat íŒŒì¼ì— ì£¼ì†Œë¡ì„ ì €ì¥í•œë‹¤.
+ì…ë ¥: ì—†ìŒ
+ì¶œëµ: count
 */
 Long Save(AddressBook *addressBook) {
 	//Long i;
@@ -226,10 +226,10 @@ Long Save(AddressBook *addressBook) {
 }
 
 /*
-ÇÔ¼öÀÌ¸§: Destroy
-±â´É: Ç¥¸¦ »èÁ¦ÇÑ´Ù.
-ÀÔ·Â: ¾øÀ½
-Ãâ·Â: ¾øÀ½
+í•¨ìˆ˜ì´ë¦„: Destroy
+ê¸°ëŠ¥: í‘œë¥¼ ì‚­ì œí•œë‹¤.
+ì…ë ¥: ì—†ìŒ
+ì¶œë ¥: ì—†ìŒ
 */
 void Destroy(AddressBook *addressBook) {
 	if (addressBook->personals != NULL) {
